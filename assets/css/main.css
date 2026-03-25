@@ -1,0 +1,239 @@
+:root {
+  --bg: #08070d;
+  --panel: #121026;
+  --text: #f8f5ff;
+  --muted: #c4bddb;
+  --hot-pink: #ff2bd6;
+  --electric-blue: #38d4ff;
+  --acid-lime: #cfff41;
+  --line: #2f2a46;
+  --max-width: 1150px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: radial-gradient(circle at 20% 20%, #1d1742 0%, var(--bg) 45%),
+    linear-gradient(145deg, #0d0a1e 0%, #08070d 100%);
+  color: var(--text);
+  font-family: "Trebuchet MS", "Arial Black", Arial, sans-serif;
+  min-height: 100%;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.14;
+  background-image: repeating-linear-gradient(
+      0deg,
+      transparent 0 2px,
+      rgba(255, 255, 255, 0.08) 2px 3px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 6px,
+      rgba(255, 255, 255, 0.04) 6px 7px
+    );
+  z-index: -1;
+}
+
+a {
+  color: var(--acid-lime);
+  text-decoration: none;
+}
+
+a:hover,
+a:focus-visible {
+  text-decoration: underline;
+}
+
+.site-wrap {
+  width: min(92vw, var(--max-width));
+  margin: 0 auto;
+}
+
+.site-header {
+  padding: 1rem 0 0.5rem;
+}
+
+.logo-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.logo {
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--hot-pink);
+  text-shadow: 0 0 14px rgba(255, 43, 214, 0.55);
+}
+
+.tagline {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.nav {
+  margin-top: 0.8rem;
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.nav a {
+  border: 1px solid var(--line);
+  background: rgba(18, 16, 38, 0.85);
+  color: var(--text);
+  padding: 0.45rem 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 0.82rem;
+}
+
+.nav a.active,
+.nav a:hover {
+  border-color: var(--electric-blue);
+  box-shadow: inset 0 0 0 1px var(--electric-blue);
+}
+
+.ticker {
+  margin: 1rem 0;
+  border: 1px solid var(--line);
+  background: rgba(10, 9, 18, 0.85);
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.ticker span {
+  display: inline-block;
+  padding: 0.55rem 0;
+  padding-left: 100%;
+  color: var(--acid-lime);
+  animation: moveTicker 22s linear infinite;
+}
+
+@keyframes moveTicker {
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+main {
+  padding: 0.5rem 0 2rem;
+}
+
+.hero {
+  border: 1px solid var(--line);
+  padding: 1.2rem;
+  background: linear-gradient(160deg, rgba(255, 43, 214, 0.12), rgba(56, 212, 255, 0.08));
+}
+
+h1,
+h2,
+h3 {
+  margin-top: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+h1 {
+  font-size: clamp(1.8rem, 6vw, 4.2rem);
+  line-height: 0.95;
+}
+
+.grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.grid-2 {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.card {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  padding: 1rem;
+}
+
+.card p {
+  color: var(--muted);
+}
+
+.pair-note {
+  font-size: 0.9rem;
+  margin: 0 0 0.75rem;
+  line-height: 1.45;
+}
+
+.pair-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  align-items: start;
+}
+
+.sketch-card iframe {
+  width: 100%;
+  display: block;
+  height: auto;
+  aspect-ratio: var(--sketch-aspect, 16 / 9);
+  border: 1px solid var(--line);
+  background: #020203;
+  overflow: hidden;
+}
+
+.btn-row {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-block;
+  border: 1px solid var(--text);
+  color: var(--text);
+  padding: 0.45rem 0.8rem;
+  font-size: 0.85rem;
+}
+
+.btn:hover {
+  border-color: var(--hot-pink);
+  color: var(--hot-pink);
+  text-decoration: none;
+}
+
+.site-footer {
+  border-top: 1px solid var(--line);
+  padding: 1rem 0 2rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.focus-target:focus-visible,
+button:focus-visible,
+a:focus-visible {
+  outline: 2px dashed var(--acid-lime);
+  outline-offset: 3px;
+}
+
+@media (max-width: 640px) {
+  .pair-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sketch-card iframe {
+    aspect-ratio: var(--sketch-aspect, 16 / 9);
+  }
+}
